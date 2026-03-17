@@ -3,8 +3,8 @@ import pandas as pd
 import difflib
 import sys
 
-s = pd.read_csv(r"C:\Users\wrt2m\Moneymanan\My Stuff\Python\NBA Stats\PlayerStatistics.csv", usecols=range(32), dtype={8: "string", 9: "string"})
-g = pd.read_csv(r"C:\Users\wrt2m\Moneymanan\My Stuff\Python\NBA Stats\Games.csv", usecols=range(12), dtype={8: "string", 10: "string"})
+s = pd.read_csv(r"Moneymanan\My Stuff\Python\NBA Stats\PlayerStatistics.csv", usecols=range(32), dtype={8: "string", 9: "string"})
+g = pd.read_csv(r"Moneymanan\My Stuff\Python\NBA Stats\Games.csv", usecols=range(12), dtype={8: "string", 10: "string"})
 
 #print(s.iloc[0, 0:2]) # Devin Booker
 #print(s.at[0,'firstName']) # Devin
