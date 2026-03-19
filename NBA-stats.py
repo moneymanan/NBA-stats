@@ -3,16 +3,27 @@ import pandas as pd
 import difflib
 import sys
 import streamlit as st
+import requests
+from io import StringIO
 
-@st.cache_data
-def loadstat_data():
-    urlstats = "https://drive.google.com/uc?id=1GPgrAPKdOywIVfC9IzGzyJQN5KH5Is6a&export=download"
-    return pd.read_csv(urlstats, low_memory=False)
-def loadgame_data():
-    urlgames = "https://drive.google.com/uc?id=1VPFH3n5-KHqhjy1EX2NEdWlPjfBUuxxH&export=download"
-    return pd.read_csv(urlgames, low_memory=False)
-s = loadstat_data()
-g = loadgame_data()
+urlstats = "https://drive.google.com/uc?id=1GPgrAPKdOywIVfC9IzGzyJQN5KH5Is6a&export=download"
+urlgames = "https://drive.google.com/uc?id=1VPFH3n5-KHqhjy1EX2NEdWlPjfBUuxxH&export=download"
+
+response1 = requests.get(urlstats)
+if response1.status_code != 200:
+    st.error(f"Failed to download CSV: status code {response1.status_code}")
+    st.stop()
+response2 = requests.get(urlgames)
+if response2.status_code != 200:
+    st.error(f"Failed to download CSV: status code {response2.status_code}")
+    st.stop()
+    
+# Convert bytes to a file-like object for pandas
+csvstats_data = StringIO(response1.text)
+csvgames_data = StringIO(response2.text)
+
+s = pd.read_csv(csvstats_data, low_memory=False)
+g = pd.read_csv(csvgames_data, low_memory=False)
 
 st.title(":sunglasses: NBA Stats :sunglasses:", text_alignment = "center")
 st.header("Trying to fulfill my NBA dreams", text_alignment = "center")
