@@ -6,24 +6,11 @@ import streamlit as st
 import requests
 from io import StringIO
 
-urlstats = "https://drive.google.com/uc?id=1GPgrAPKdOywIVfC9IzGzyJQN5KH5Is6a&export=download"
-urlgames = "https://drive.google.com/uc?id=1VPFH3n5-KHqhjy1EX2NEdWlPjfBUuxxH&export=download"
+urlstats = "https://media.githubusercontent.com/media/moneymanan/NBA-stats/refs/heads/main/Moneymanan/My%20Stuff/Python/NBA%20Stats/PlayerStatistics.csv"
+urlgames = "https://media.githubusercontent.com/media/moneymanan/NBA-stats/refs/heads/main/Moneymanan/My%20Stuff/Python/NBA%20Stats/Games.csv"
 
-response1 = requests.get(urlstats)
-if response1.status_code != 200:
-    st.error(f"Failed to download CSV: status code {response1.status_code}")
-    st.stop()
-response2 = requests.get(urlgames)
-if response2.status_code != 200:
-    st.error(f"Failed to download CSV: status code {response2.status_code}")
-    st.stop()
-    
-# Convert bytes to a file-like object for pandas
-csvstats_data = StringIO(response1.text)
-csvgames_data = StringIO(response2.text)
-
-s = pd.read_csv(csvstats_data, low_memory=False)
-g = pd.read_csv(csvgames_data, low_memory=False)
+s = pd.read_csv(urlstats, low_memory=False)
+g = pd.read_csv(urlgames, low_memory=False)
 
 st.title(":sunglasses: NBA Stats :sunglasses:", text_alignment = "center")
 st.header("Trying to fulfill my NBA dreams", text_alignment = "center")
@@ -33,12 +20,10 @@ st.write(s.columns)
 # Normalize columns
 s.columns = s.columns.str.strip().str.lower()
 
-
 # Safety check
 if "firstname" not in s.columns or "lastname" not in s.columns:
     st.error("Expected columns not found!")
     st.stop()
-
 
 valid_stats = list(s.columns)
 s["player"] = s["firstname"] + " " + s["lastname"]
