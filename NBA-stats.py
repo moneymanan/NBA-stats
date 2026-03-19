@@ -30,7 +30,7 @@ s["player"] = s["firstname"] + " " + s["lastname"]
 players = s["player"].unique()
 name = st.text_input("Name: ", key='player_name')
 while ' ' not in name:
-    name = st.text_input('Enter first and last name: ', key='player_name')
+    name = st.text_input('Enter first and last name: ', key='player_name2')
 while name not in players:
     suggestion1 = difflib.get_close_matches(name, players, n=1, cutoff=0.6)
     if suggestion1:
@@ -40,7 +40,7 @@ while name not in players:
         if y1: #opt.lower() =='y':
             name = suggestion1[0]
         elif n1:
-            name = st.text_input("Name: ", key='player_name2')
+            name = st.text_input("Name: ", key='player_name3')
     else:
         sys.exit(':( NAME ERROR :(')
 
