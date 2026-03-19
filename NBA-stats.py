@@ -17,8 +17,22 @@ g = loadgame_data()
 st.title(":sunglasses: NBA Stats :sunglasses:", text_alignment = "center")
 st.header("Trying to fulfill my NBA dreams", text_alignment = "center")
 
+# Normalize columns
+s.columns = s.columns.str.strip().str.lower()
+
+# Debug
+st.write("Columns:", s.columns)
+
+# Safety check
+if "firstname" not in s.columns or "lastname" not in s.columns:
+    st.error("Expected columns not found!")
+    st.stop()
+
+# Create player column
+
+
 valid_stats = list(s.columns)
-s["player"] = s["firstName"] + " " + s["lastName"]
+s["player"] = s["firstname"] + " " + s["lastname"]
 players = s["player"].unique()
 name = st.text_input("Name: ")
 while ' ' not in name:
