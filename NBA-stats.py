@@ -35,9 +35,11 @@ while name not in players:
     suggestion = difflib.get_close_matches(name, players, n=1, cutoff=0.6)
     if suggestion:
         opt = st.write(f"Do you mean '{suggestion[0]}'?")
-        if st.button("Yes"): #opt.lower() =='y':
+        y1 = st.button("Yes")
+        n1 = st.button("No")
+        if y1: #opt.lower() =='y':
             name = suggestion[0]
-        elif st.button("No"):
+        elif n1:
             name = st.text_input("Name: ")
     else:
         sys.exit(':( NAME ERROR :(')
@@ -47,9 +49,11 @@ while stat.lower() not in [col.lower() for col in valid_stats]:
     suggestion = difflib.get_close_matches(stat, valid_stats, n=1)
     if suggestion:
         opt = st.write(f"Do you mean '{suggestion[0]}'?")
-        if st.button("Yes"): #opt.lower() == 'y':
+        y2 = st.button("Yes")
+        n2 = st.button("No")
+        if y2: #opt.lower() == 'y':
             stat = suggestion[0]
-        elif st.button("No"):
+        elif n2:
             stat = st.text_input("Enter stat: ")
     else:
         sys.exit('LAPTOP DESTRUCTION EMINENT\n'*5) 
