@@ -32,13 +32,13 @@ name = st.text_input("Name: ")
 while ' ' not in name:
     name = st.text_input('Enter first and last name: ')
 while name not in players:
-    suggestion = difflib.get_close_matches(name, players, n=1, cutoff=0.6)
-    if suggestion:
-        opt = st.write(f"Do you mean '{suggestion[0]}'?")
+    suggestion1 = difflib.get_close_matches(name, players, n=1, cutoff=0.6)
+    if suggestion1:
+        opt1 = st.write(f"Do you mean '{suggestion1[0]}'?")
         y1 = st.button("Yes")
         n1 = st.button("No")
         if y1: #opt.lower() =='y':
-            name = suggestion[0]
+            name = suggestion1[0]
         elif n1:
             name = st.text_input("Name: ")
     else:
@@ -46,13 +46,13 @@ while name not in players:
 
 stat = st.text_input("What stat do you want? (points, rebounds, assists, blocks, steals): ").lower()
 while stat.lower() not in [col.lower() for col in valid_stats]:
-    suggestion = difflib.get_close_matches(stat, valid_stats, n=1)
-    if suggestion:
-        opt = st.write(f"Do you mean '{suggestion[0]}'?")
+    suggestion2 = difflib.get_close_matches(stat, valid_stats, n=1)
+    if suggestion2:
+        opt2 = st.write(f"Do you mean '{suggestion2[0]}'?")
         y2 = st.button("Yes")
         n2 = st.button("No")
         if y2: #opt.lower() == 'y':
-            stat = suggestion[0]
+            stat = suggestion2[0]
         elif n2:
             stat = st.text_input("Enter stat: ")
     else:
