@@ -4,9 +4,15 @@ import difflib
 import sys
 import streamlit as st
 
-
-s = pd.read_csv(r"https://drive.google.com/uc?id=1GPgrAPKdOywIVfC9IzGzyJQN5KH5Is6a", usecols=range(32), dtype={8: "string", 9: "string"})
-g = pd.read_csv(r"https://drive.google.com/uc?id=1VPFH3n5-KHqhjy1EX2NEdWlPjfBUuxxH", usecols=range(12), dtype={8: "string", 10: "string"})
+@st.cache_data
+def loadstat_data():
+    urlstats = "https://drive.google.com/uc?id=1GPgrAPKdOywIVfC9IzGzyJQN5KH5Is6a"
+    return pd.read_csv(urlstats, usecols=range(32), dtype={8: "string", 9: "string"})
+def loadgame_data():
+    urlgames = "https://drive.google.com/uc?id=1VPFH3n5-KHqhjy1EX2NEdWlPjfBUuxxH"
+    return pd.read_csv(urlgames, usecols=range(12), dtype={8: "string", 10: "string"})
+s = loadstat_data()
+g = loadgame_data()
 
 st.title(":sunglasses: NBA Stats :sunglasses:", text_alignment = "center")
 st.header("Trying to fulfill my NBA dreams", text_alignment = "center")
