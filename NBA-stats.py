@@ -7,10 +7,10 @@ import streamlit as st
 @st.cache_data
 def loadstat_data():
     urlstats = "https://drive.google.com/uc?id=1GPgrAPKdOywIVfC9IzGzyJQN5KH5Is6a&export=download"
-    return pd.read_csv(urlstats)
+    return pd.read_csv(urlstats, low_memory=False)
 def loadgame_data():
     urlgames = "https://drive.google.com/uc?id=1VPFH3n5-KHqhjy1EX2NEdWlPjfBUuxxH&export=download"
-    return pd.read_csv(urlgames)
+    return pd.read_csv(urlgames, low_memory=False)
 s = loadstat_data()
 g = loadgame_data()
 
