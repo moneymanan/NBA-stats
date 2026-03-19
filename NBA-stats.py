@@ -17,6 +17,8 @@ g = loadgame_data()
 st.title(":sunglasses: NBA Stats :sunglasses:", text_alignment = "center")
 st.header("Trying to fulfill my NBA dreams", text_alignment = "center")
 
+st.write(s.columns)
+
 # Normalize columns
 s.columns = s.columns.str.strip().str.lower()
 
