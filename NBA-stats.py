@@ -15,8 +15,6 @@ g = pd.read_csv(urlgames, low_memory=False)
 st.title(":sunglasses: NBA Stats :sunglasses:", text_alignment = "center")
 st.header("Trying to fulfill my NBA dreams", text_alignment = "center")
 
-st.write(s.columns)
-
 # Normalize columns
 s.columns = s.columns.str.strip().str.lower()
 
@@ -28,7 +26,7 @@ if "firstname" not in s.columns or "lastname" not in s.columns:
 valid_stats = list(s.columns)
 s["player"] = s["firstname"] + " " + s["lastname"]
 players = s["player"].unique()
-name = st.text_input("Name: ", key='player_name')
+name = st.text_input("Name: ", key='player_name1')
 while ' ' not in name:
     name = st.text_input('Enter first and last name: ', key='player_name2')
 while name not in players:
@@ -44,7 +42,7 @@ while name not in players:
     else:
         sys.exit(':( NAME ERROR :(')
 
-stat = st.text_input("What stat do you want? (points, rebounds, assists, blocks, steals): ", key='stat').lower()
+stat = st.text_input("What stat do you want? (points, rebounds, assists, blocks, steals): ", key='stat1').lower()
 while stat.lower() not in [col.lower() for col in valid_stats]:
     suggestion2 = difflib.get_close_matches(stat, valid_stats, n=1)
     if suggestion2:
