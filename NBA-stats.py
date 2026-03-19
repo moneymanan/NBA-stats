@@ -5,8 +5,8 @@ import sys
 import streamlit as st
 
 
-s = pd.read_csv(r"Moneymanan\My Stuff\Python\NBA Stats\PlayerStatistics.csv", usecols=range(32), dtype={8: "string", 9: "string"})
-g = pd.read_csv(r"Moneymanan\My Stuff\Python\NBA Stats\Games.csv", usecols=range(12), dtype={8: "string", 10: "string"})
+s = pd.read_csv(r"https://drive.google.com/uc?id=1GPgrAPKdOywIVfC9IzGzyJQN5KH5Is6a", usecols=range(32), dtype={8: "string", 9: "string"})
+g = pd.read_csv(r"https://drive.google.com/uc?id=1VPFH3n5-KHqhjy1EX2NEdWlPjfBUuxxH", usecols=range(12), dtype={8: "string", 10: "string"})
 
 st.title(":sunglasses: NBA Stats :sunglasses:", text_alignment = "center")
 st.header("Trying to fulfill my NBA dreams", text_alignment = "center")
