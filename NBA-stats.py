@@ -28,9 +28,9 @@ if "firstname" not in s.columns or "lastname" not in s.columns:
 valid_stats = list(s.columns)
 s["player"] = s["firstname"] + " " + s["lastname"]
 players = s["player"].unique()
-name = st.text_input("Name: ")
+name = st.text_input("Name: ", key='player_name')
 while ' ' not in name:
-    name = st.text_input('Enter first and last name: ')
+    name = st.text_input('Enter first and last name: ', key='player_name')
 while name not in players:
     suggestion1 = difflib.get_close_matches(name, players, n=1, cutoff=0.6)
     if suggestion1:
@@ -40,11 +40,11 @@ while name not in players:
         if y1: #opt.lower() =='y':
             name = suggestion1[0]
         elif n1:
-            name = st.text_input("Name: ")
+            name = st.text_input("Name: ", key='player_name2')
     else:
         sys.exit(':( NAME ERROR :(')
 
-stat = st.text_input("What stat do you want? (points, rebounds, assists, blocks, steals): ").lower()
+stat = st.text_input("What stat do you want? (points, rebounds, assists, blocks, steals): ", key='stat').lower()
 while stat.lower() not in [col.lower() for col in valid_stats]:
     suggestion2 = difflib.get_close_matches(stat, valid_stats, n=1)
     if suggestion2:
@@ -54,7 +54,7 @@ while stat.lower() not in [col.lower() for col in valid_stats]:
         if y2: #opt.lower() == 'y':
             stat = suggestion2[0]
         elif n2:
-            stat = st.text_input("Enter stat: ")
+            stat = st.text_input("Enter stat: ", key='stat2')
     else:
         sys.exit('LAPTOP DESTRUCTION EMINENT\n'*5) 
 
