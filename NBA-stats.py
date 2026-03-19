@@ -38,7 +38,7 @@ while name not in players:
         if y1: #opt.lower() =='y':
             name = suggestion1[0]
         elif n1:
-            name = st.text_input("Name: ", key='player_name3')
+            name = st.text_input("Name: ")
     else:
         sys.exit(':( NAME ERROR :(')
 
@@ -52,7 +52,7 @@ while stat.lower() not in [col.lower() for col in valid_stats]:
         if y2: #opt.lower() == 'y':
             stat = suggestion2[0]
         elif n2:
-            stat = st.text_input("Enter stat: ", key='stat2')
+            stat = st.text_input("Enter stat: ")
     else:
         sys.exit('LAPTOP DESTRUCTION EMINENT\n'*5) 
 
