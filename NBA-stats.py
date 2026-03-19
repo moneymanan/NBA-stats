@@ -33,15 +33,11 @@ st.write(s.columns)
 # Normalize columns
 s.columns = s.columns.str.strip().str.lower()
 
-# Debug
-st.write("Columns:", s.columns)
 
 # Safety check
 if "firstname" not in s.columns or "lastname" not in s.columns:
     st.error("Expected columns not found!")
     st.stop()
-
-# Create player column
 
 
 valid_stats = list(s.columns)
