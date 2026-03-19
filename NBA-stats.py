@@ -27,7 +27,7 @@ valid_stats = list(s.columns)
 s["player"] = s["firstname"] + " " + s["lastname"]
 players = s["player"].unique()
 name = st.text_input("Name: ", key='player_name1')
-while ' ' not in name:
+if ' ' not in name:
     name = st.text_input('Enter first and last name: ', key='player_name2')
 while name not in players:
     suggestion1 = difflib.get_close_matches(name, players, n=1, cutoff=0.6)
