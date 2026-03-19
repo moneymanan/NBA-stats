@@ -29,7 +29,7 @@ players = s["player"].unique()
 name = st.text_input("Name: ", key='player_name1')
 if ' ' not in name:
     name = st.text_input('Enter first and last name: ', key='player_name2')
-while name not in players:
+if name not in players:
     suggestion1 = difflib.get_close_matches(name, players, n=1, cutoff=0.6)
     if suggestion1:
         opt1 = st.write(f"Do you mean '{suggestion1[0]}'?")
@@ -41,7 +41,7 @@ while name not in players:
         sys.exit(':( NAME ERROR :(')
 
 stat = st.text_input("What stat do you want? (points, rebounds, assists, blocks, steals): ", key='stat1').lower()
-while stat.lower() not in [col.lower() for col in valid_stats]:
+if stat.lower() not in [col.lower() for col in valid_stats]:
     suggestion2 = difflib.get_close_matches(stat, valid_stats, n=1)
     if suggestion2:
         opt2 = st.write(f"Do you mean '{suggestion2[0]}'?")
